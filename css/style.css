@@ -18,3 +18,41 @@ button {
   padding: 0;
   cursor: pointer;
 }
+
+.form {
+  margin: 30px auto 0;
+  padding: 10px;
+  max-width: 50%;
+  border-radius: 10px;
+  border: 1px solid #000;
+  background-color: rgb(52, 155, 203);
+}
+
+.form-item {
+  margin: 20px 0 0 0;
+  font-size: 18px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.form-input {
+  margin-right: 10px;
+  border-radius: 5px;
+}
+
+.form-btn {
+  display: block;
+  margin: 20px auto 0;
+  padding: 10px;
+  border: 1px solid #000;
+  border-radius: 5px; 
+  background-color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.form-btn:hover {
+  background-color: rgb(125, 125, 182);
+  color: #fff;
+  transition: background-color .5s, color .5s;
+}
