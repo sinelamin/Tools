@@ -22,13 +22,14 @@ button {
 .form {
   margin: 30px auto 0;
   padding: 10px;
-  max-width: 50%;
+  max-width: 500px;
   border-radius: 10px;
   border: 1px solid #000;
   background-color: rgb(52, 155, 203);
 }
 
 .form-item {
+  display: block;
   margin: 20px 0 0 0;
   font-size: 18px;
   font-weight: 500;
@@ -36,8 +37,13 @@ button {
 }
 
 .form-input {
+  max-width: 50%;
   margin-right: 10px;
   border-radius: 5px;
+}
+
+.form-consent {
+  font-size: 15px;
 }
 
 .form-btn {

@@ -12,24 +12,25 @@
 <body>
   
   <form class="form" action="#">
-    <p class="form-item">
-      <input class="form-input" name="name" type="text">
-      Имя пользователя
-    </p>
-    <p class="form-item">
-      <input class="form-input" name="pass" type="password">
+    <label class="form-item">
+      <input required autocomplete="off" class="form-input" name="name" type="text">
+      Имя
+    </label>
+    <!-- <label class="form-item">
+      <input required autocomplete="off" class="form-input" name="pass" type="password">
       Пароль
-    </p>
-    <p class="form-item">
-      <input class="form-input" name="tel" type="tel">
-      Номер для регистрации
-    </p>
-    <p class="form-item">
-      <input class="form-input" name="consent" type="checkbox">
-      Подтвердите согласие на обратку данных
-    </p>
+    </label> -->
+    <label class="form-item">
+      <input required autocomplete="off" class="form-input" name="tel" type="tel">
+      Номер телефона
+    </label>
+    <label class="form-item form-consent">
+      <input required class="form-input" name="consent" type="checkbox">
+      Подтвердите согласие на обратку персональных данных
+    </label>
     <button class="form-btn" type="submit">Отправить</button>
   </form>
 
+  <script src="./script.js"></script>
 </body>
 </html>
