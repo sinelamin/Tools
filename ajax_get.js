@@ -1,6 +1,5 @@
 'use strict'
 
-
 // Простой конвертор RUB в USD
 const inputRub = document.querySelector('.item-rub'),
       inputUsd = document.querySelector('.item-usd');
