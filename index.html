@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="./assets/tools.png">
+  <link rel="stylesheet" href="./css/normalize.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <title>Forms</title>
+</head>
+
+<body>
+
+  <div class="contact-form">
+    <h3 class="block-title">Форма отправки контактов</h3>
+    <form class="form" action="#">
+      <label class="form-item">
+        <input required autocomplete="off" class="form-input" name="username" type="text">
+        Имя
+      </label>
+      <!-- <label class="form-item">
+      <input required autocomplete="off" class="form-input" name="pass" type="password">
+      Пароль
+    </label> -->
+      <label class="form-item">
+        <input required autocomplete="off" class="form-input" name="tel" type="tel">
+        Номер телефона
+      </label>
+      <label class="form-item form-consent">
+        <input required class="form-input" name="consent" type="checkbox">
+        Подтвердите согласие на обратку персональных данных
+      </label>
+      <button class="form-btn" type="submit">Отправить</button>
+    </form>
+  </div>
+
+  <div class="currency-converter">
+    <h3 class="block-title">Конвертор валют RUB - USD</h3>
+    <form class="form form-convertor" action="#">
+      <label class="form-item">
+        <input required autocomplete="off" class="form-input item-rub" name="rub" type="text">
+        RUB
+      </label>
+      <label class="form-item">
+        <input required autocomplete="off" class="form-input item-usd" name="usd" type="text">
+        USD
+      </label>
+    </form>
+  </div>
+
+  <script type="module" src="./script.js"></script>
+</body>
+
+</html>

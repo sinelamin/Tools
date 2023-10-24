@@ -1,5 +1,7 @@
 'use strict';
 
+import { } from './ajax_get.js';
+
 const inputNumber = document.querySelector('[name="tel"]');
 
 let phoneNumber = '+7(';
