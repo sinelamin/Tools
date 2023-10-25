@@ -1,6 +1,7 @@
 'use strict';
 
 import { } from './ajax_get_post.js';
+import { } from './fetch_api.js';
 
 const inputNumbers = document.querySelectorAll('.form-input__tel');
 
