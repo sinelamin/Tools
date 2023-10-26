@@ -48,18 +48,18 @@ function postData(form) {
     const formData = new FormData(form);
 
     // Преобразование formDate в обычный объект
-    // const obj = {};
-    // formData.forEach((value, key) => {
-    //   obj[key] = value;
-    // });
+      const obj = {};
+      formData.forEach((value, key) => {
+        obj[key] = value;
+      });
 
-    fetch('server.php', {
+    fetch('http://localhost:3000/request', {
       method: 'POST',
-      body: formData,
-      // body: JSON.stringify(obj), // для передачи в JSON формате преобразуем объект
-      // headers: {
-      //   'Content-type': 'application/json', // прописываем заоловки для JSON
-      // }
+      // body: formData, // передача данных в формате formData
+      body: JSON.stringify(obj), // для передачи в JSON формате преобразуем объект
+      headers: {
+        'Content-type': 'application/json', // прописываем заоловки для JSON
+      }
     })
     .then(response => {
       if (!response.ok) {
