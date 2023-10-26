@@ -43,10 +43,27 @@ function postData(form) {
   form.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    const sendMassage = document.createElement('div');
-    sendMassage.classList.add('form-message');
-    sendMassage.textContent = message.load;
-    form.append(sendMassage);
+    const body = document.querySelector('body');
+
+    const overlay = document.createElement('div');
+    const popup = document.createElement('div');
+
+    overlay.classList.add('overlay');
+    popup.classList.add('popup');
+
+    body.prepend(overlay);
+    overlay.after(popup);
+
+    body.style.overflow = 'hidden';
+    overlay.style.height = `${document.documentElement.scrollHeight}px`;
+    popup.style.top = `${document.documentElement.scrollTop + (document.documentElement.clientHeight / 2)}px`;
+
+    popup.innerHTML = `
+    <p class="popup-text">${message.load}</p>
+    <img class="spinner" src="./assets/054 spinner.svg" alt="">
+    `;
+
+    form.reset();
 
     const formData = new FormData(form);
 
@@ -73,16 +90,19 @@ function postData(form) {
     })
     .then(data => {
       console.log(data);
-      sendMassage.textContent = message.success;
+      document.querySelector('.spinner').remove();
+      document.querySelector('.popup-text').textContent = message.success;
     })
     .catch((e) => {
-      sendMassage.textContent = message.failure;
+      document.querySelector('.spinner').remove();
+      document.querySelector('.popup-text').textContent = message.failure;
       console.error(e);
     })
     .finally(() => {
-      form.reset();
       setTimeout(() => {
-        sendMassage.remove();
+        overlay.remove();
+        popup.remove();
+        body.style.overflow = '';
       }, 3000);
     });
   });
