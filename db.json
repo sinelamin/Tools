@@ -1,10 +1,66 @@
 {
+  "cards": [
+    {
+      "service": "gardens",
+      "img": "./assets/service-card-1.png",
+      "title": "Garden care",
+      "descr": "Lorem Ipsum has been the industry",
+      "descrBig": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi dolor nobis quas expedita nam fugiat, explicabo doloremque"
+    },
+    {
+      "service": "planting",
+      "img": "./assets/service-card-2.png",
+      "title": "Planting",
+      "descr": "Lorem Ipsum has been the industry",
+      "descrBig": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi dolor nobis quas expedita nam fugiat, explicabo doloremque deleniti corporis quam alias illo iusto quis similique est vero voluptate! Officiis, at!"
+    },
+    {
+      "service": "lawn",
+      "img": "./assets/service-card-3.png",
+      "title": "Lawn care",
+      "descr": "Lorem Ipsum has been the industry",
+      "descrBig": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi dolor nobis quas expedita nam fugiat, est vero voluptate! Officiis, at!"
+    },
+    {
+      "service": "planting",
+      "img": "./assets/service-card-4.png",
+      "title": "Planting",
+      "descr": "Lorem Ipsum has been the industry",
+      "descrBig": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi dolor nobis quas expedita nam fugiat, explicabo doloremque deleniti corporis quam alias illo iusto quis similique est vero voluptate! Officiis, at, explicabo doloremque deleniti corporis quam alias illo iusto quis similique est vero voluptate! Officiis, at!"
+    },
+    {
+      "service": "gardens",
+      "img": "./assets/service-card-5.png",
+      "title": "Garden care",
+      "descr": "Lorem Ipsum has been the industry",
+      "descrBig": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi dolor nobis quas expedita nam fugiat!"
+    },
+    {
+      "service": "planting",
+      "img": "./assets/service-card-6.png",
+      "title": "Planting",
+      "descr": "Lorem Ipsum has been the industry",
+      "descrBig": "Sequi dolor nobis quas expedita nam fugiat, explicabo doloremque deleniti corporis quam alias illo iusto quis similique est vero voluptate! Officiis, at!"
+    }
+  ],
   "request": [
     {
       "username-1": "Олег Монгол",
       "tel-1": "+7(995)8888888",
       "consent": "on",
       "id": 1
+    },
+    {
+      "username-1": "Петр",
+      "tel-1": "+7(999)2568977",
+      "consent": "on",
+      "id": 2
+    },
+    {
+      "username-1": "Олег не Монгол",
+      "tel-1": "+7(996)1111111",
+      "consent": "on",
+      "id": 3
     }
   ]
 }

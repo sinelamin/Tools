@@ -4,23 +4,26 @@
 const inputRub = document.querySelector('.item-rub'),
       inputUsd = document.querySelector('.item-usd');
 
-inputRub.addEventListener('input', () => {
-  fetch('./data-currency.json')
-    .then(response => {
-      if (!response.ok) { // так как fetch не в качестве ошибки распознает только неполадки с сетью, то мы в ручную прописываем ошибку
-        throw new Error(`Could not fetch ./data-currency.json, status: ${response.status}`);
-      }
-      return response.text();
-    })
-    .then(result => {
-      const data = JSON.parse(result);
-      inputUsd.value = (+inputRub.value / data.current.usd).toFixed(2);
-    })
-    .catch((e) => {
-      console.error(e); // выводим в консоль нашу рукатворную ошибку
-      inputUsd.value = 'Что-то пошло не так!';
-    });
-});
+
+if (inputRub) {
+  inputRub.addEventListener('input', () => {
+    fetch('./data-currency.json')
+      .then(response => {
+        if (!response.ok) { // так как fetch не в качестве ошибки распознает только неполадки с сетью, то мы в ручную прописываем ошибку
+          throw new Error(`Could not fetch ./data-currency.json, status: ${response.status}`);
+        }
+        return response.text();
+      })
+      .then(result => {
+        const data = JSON.parse(result);
+        inputUsd.value = (+inputRub.value / data.current.usd).toFixed(2);
+      })
+      .catch((e) => {
+        console.error(e); // выводим в консоль нашу рукатворную ошибку
+        inputUsd.value = 'Что-то пошло не так!';
+      });
+  });
+}
 
 
 // Отправка данных формы на сервер (formDate и JSON) реализованный на fetch

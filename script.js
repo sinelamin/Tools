@@ -2,6 +2,7 @@
 
 import { } from './ajax_get_post.js';
 import { } from './fetch_api.js';
+import { } from './getCards.js';
 
 const inputNumbers = document.querySelectorAll('.form-input__tel');
 
