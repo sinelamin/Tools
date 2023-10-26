@@ -9,18 +9,18 @@ let phoneNumber = '+7(';
 
 inputNumbers.forEach(input => {
   input.addEventListener('input', (e) => {
-  
+
     if (+e.data == e.data && phoneNumber.length < 14 && e.data != ' ') {
       phoneNumber = `${phoneNumber}${e.data}`;
-      
-      if (phoneNumber.length == 6) {
-        phoneNumber = `${phoneNumber})`;
+      console.log(phoneNumber.length);
+      if (phoneNumber.length == 7) {
+        phoneNumber = `${phoneNumber.slice(0, -1)})${e.data}`;
       }
-      
+
     } else if (e.inputType == 'deleteContentBackward' && phoneNumber.length > 3) {
       phoneNumber = phoneNumber.slice(0, -1);
     }
-    
+
     input.value = phoneNumber;
   });
 
