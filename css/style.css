@@ -209,11 +209,11 @@ button {
 /* slider */
 
 .slider-wrapper {
-  /* overflow: hidden; */
+  overflow: hidden;
   padding-top: 50px;
   max-width: 1200px;
-  border: 1px solid #000;
-  background-color: rgb(177, 250, 7);
+  /* border: 1px solid #000; */
+  /* background-color: rgb(177, 250, 7); */
 }
 
 .slider-list {
@@ -279,4 +279,46 @@ button {
 
 .slider-btn__arrow:hover {
   background-color: grey;
+}
+
+@media (max-width: 1030px) {
+  .slider-item {
+    margin: 0 10px;
+  }
+}
+
+@media (max-width: 881px) {
+  .slider-item {
+    margin: 0 3%;
+  }
+}
+
+@media (max-width: 701px) {
+  .slider-item {
+    margin: 0 10px;
+  }
+}
+
+@media (max-width: 631px) {
+  .slider-item {
+    margin: 0 5px;
+  }
+}
+
+@media (max-width: 600px) {
+  .slider-item {
+    margin: 0 10%;
+  }
+}
+
+@media (max-width: 390px) {
+  .slider-item {
+    margin: 0 30px;
+  }
+}
+
+@media (max-width: 350px) {
+  .slider-item {
+    margin: 0;
+  }
 }
