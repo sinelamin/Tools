@@ -32,7 +32,19 @@ const getCards = async (url) => {
   return await response.json();
 };
 
-const setCardsWidth = (cards, htmlWidth, sliderWrapperWidth, marginCard) => {
+const disableArrowBtn = (btn) => {
+  btn.setAttribute('disabled', '');
+  btn.style.pointerEvents = 'none';
+};
+
+const enabledArrowBtn = (btn) => {
+  btn.removeAttribute('disabled', '');
+  btn.style.pointerEvents = 'auto';
+};
+
+const setCardsWidth = (cards, sliderWrapperWidth, marginCard) => {
+  const htmlWidth = document.documentElement.offsetWidth; //*
+
   cards.forEach(card => {
     if (htmlWidth > 880) {
       card.style.minWidth = `${Math.floor((sliderWrapperWidth / 3) - marginCard)}px`;
@@ -53,7 +65,6 @@ const getMarginCard = (cards) => {
   const indexSpace = marginCss.indexOf(' ');
   const margin = +marginCss.slice(indexSpace, -2) * 2;
 
-  // console.log('card margin: ', margin);
   return margin;
 };
 
@@ -77,45 +88,42 @@ const addSlider = async () => {
 
   const cards = document.querySelectorAll('.slider-item');
 
-  console.log(cards);
-
-  const htmlWidth = document.documentElement.offsetWidth; //*
-
-  const numberOfCards = cards.length;
   const marginCard = getMarginCard(cards);
 
   const sliderWrapperWidth = sliderWrapper.offsetWidth;
-
-  setCardsWidth(cards, htmlWidth, sliderWrapperWidth, marginCard);
-
+  setCardsWidth(cards, sliderWrapperWidth, marginCard);
   const cardWidth = cards[0].offsetWidth;
-  const step = Math.floor((sliderWrapperWidth / (cardWidth + marginCard)));
 
+  const step = Math.floor((sliderWrapperWidth / (cardWidth + marginCard)));
   const offset = (cardWidth + marginCard) * step;
+
   let position = 0;
   let positionSlide = 1;
 
-  arrowleft.setAttribute('disabled', ''); //*
-  arrowleft.style.pointerEvents = 'none';
+  disableArrowBtn(arrowleft);
 
   arrowRight.addEventListener('click', () => {
-    if (positionSlide < (numberOfCards / step)) {
+    const displayedCards = cards.length / step;
+
+    if (positionSlide < displayedCards) {
       sliderList.style.transform = `translateX(${position -= offset}px)`;
 
-      arrowleft.removeAttribute('disabled', ''); //*
-      arrowleft.style.pointerEvents = 'auto';
+      enabledArrowBtn(arrowleft);
 
       positionSlide += 1;
 
-      if ((numberOfCards / step) != Math.floor(numberOfCards / step) && positionSlide === Math.ceil((numberOfCards / step))) {
-        sliderList.style.transform = `translateX(${position + (offset - (offset * ((numberOfCards / step) - Math.floor(numberOfCards / step))))}px)`;
+      console.log(position);
+
+      if (displayedCards != Math.floor(displayedCards) && positionSlide === Math.ceil(displayedCards)) {
+        sliderList.style.transform = `
+        translateX(${position + offset * (Math.ceil(displayedCards) - displayedCards)}px)
+        `;
       }
     }
 
 
-    if (positionSlide === Math.ceil((numberOfCards / step))) {
-      arrowRight.setAttribute('disabled', '');
-      arrowRight.style.pointerEvents = 'none';
+    if (positionSlide === Math.ceil(displayedCards)) {
+      disableArrowBtn(arrowRight);
     }
   });
 
@@ -123,15 +131,13 @@ const addSlider = async () => {
     if (positionSlide > 1) {
       sliderList.style.transform = `translateX(${position += offset}px)`;
 
-      arrowRight.removeAttribute('disabled', '');
-      arrowRight.style.pointerEvents = 'auto';
+      enabledArrowBtn(arrowRight);
 
       positionSlide -= 1;
     }
 
     if (position === 0) {
-      arrowleft.setAttribute('disabled', '');
-      arrowleft.style.pointerEvents = 'none';
+      disableArrowBtn(arrowleft);
     }
   });
 };
@@ -139,12 +145,3 @@ const addSlider = async () => {
 if (`${document.location.pathname}` == '/slider.html') { //*
   addSlider();
 }
-
-
-
-  // new Card(
-  //   './assets/service-card-1.png',
-  //   'title',
-  //   'Lorem ipsum dolor sit, amet consectetur adipisicing elit.',
-  //   sliderList
-  // ).createCard();
