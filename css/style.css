@@ -219,6 +219,7 @@ button {
 .slider-list {
   display: flex;
   margin-bottom: 50px;
+  transition: transform 1s;
 }
 
 .slider-item {
@@ -273,7 +274,7 @@ button {
   background-color: #fff;
 }
 
-.slider-btn__arrow + .slider-btn__arrow {
+.slider-btn__arrow+.slider-btn__arrow {
   margin-left: 50px;
 }
 
