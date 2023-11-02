@@ -13,6 +13,11 @@ body {
   background-color: rgb(211, 191, 191);
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 .overlay {
   position: absolute;
   top: 0;
@@ -139,19 +144,21 @@ button {
 }
 
 .link-page {
-  position: relative;
-  display: block;
+  /* position: relative; */
+  display: inline-block;
+  margin: 0 10px 10px 0;
   max-width: 170px;
-  transform: translateX(-170px);
-  left: 100%;
+  /* transform: translateX(-170px); */
+  /* left: 100%; */
 }
 
 .link-page+.link-page {
-  margin-top: 10px;
+  /* margin-top: 10px; */
 }
 
 .link-page__btn {
-  padding: 20px 40px;
+  width: 170px;
+  padding: 20px 20px;
   border: 1px solid #000;
   border-radius: 10px;
   background-color: #fff;

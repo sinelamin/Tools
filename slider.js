@@ -1,7 +1,5 @@
 'use strict';
 
-console.log(document.URL); //*
-
 // Класс для создания экземпляров карточки
 class Card {
   constructor(img, title, descr, parent) {
