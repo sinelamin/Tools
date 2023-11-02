@@ -67,10 +67,7 @@ const getMarginCard = (cards) => {
 };
 
 const addSlider = async () => {
-  const sliderWrapper = document.querySelector('.slider-wrapper');
   const sliderList = document.querySelector('.slider-list');
-  const arrowleft = document.querySelector('.slider-btn__left');
-  const arrowRight = document.querySelector('.slider-btn__right');
 
   await getCards('http://localhost:3000/cards')
     .then(data => {
@@ -84,6 +81,9 @@ const addSlider = async () => {
       });
     });
 
+  const sliderWrapper = document.querySelector('.slider-wrapper');
+  const arrowleft = document.querySelector('.slider-btn__left');
+  const arrowRight = document.querySelector('.slider-btn__right');
   const cards = document.querySelectorAll('.slider-item');
 
   const marginCard = getMarginCard(cards);
@@ -123,7 +123,6 @@ const addSlider = async () => {
     }
   });
 
-
   arrowleft.addEventListener('click', () => {
     if (positionSlide > 1) {
       sliderList.style.transform = `translateX(${position += offset}px)`;
@@ -131,8 +130,10 @@ const addSlider = async () => {
       enabledArrowBtn(arrowRight);
 
       positionSlide -= 1;
-    } else {
-      disableArrowBtn(arrowleft);
+
+      if (positionSlide == 1) {
+        disableArrowBtn(arrowleft);
+      }
     }
   });
 };

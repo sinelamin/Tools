@@ -67,10 +67,7 @@ const getMarginCard = (cards) => {
 };
 
 const addSlider = async () => {
-  const sliderWrapper = document.querySelector('.slider-wrapper');
   const sliderList = document.querySelector('.slider-list');
-  const arrowleft = document.querySelector('.slider-btn__left');
-  const arrowRight = document.querySelector('.slider-btn__right');
 
   await getCards('http://localhost:3000/cards')
     .then(data => {
@@ -84,6 +81,9 @@ const addSlider = async () => {
       });
     });
 
+  const sliderWrapper = document.querySelector('.slider-wrapper');
+  const arrowleft = document.querySelector('.slider-btn__left');
+  const arrowRight = document.querySelector('.slider-btn__right');
   const cards = document.querySelectorAll('.slider-item');
 
   const marginCard = getMarginCard(cards);
@@ -97,13 +97,10 @@ const addSlider = async () => {
 
   let position = 0;
   let positionSlide = 1;
-  let counter = 1;
 
   const displayedCards = cards.length / step;
 
   arrowRight.addEventListener('click', () => {
-    counter += 1;
-
     if (positionSlide < displayedCards) {
       sliderList.style.transform = `translateX(${position -= offset}px)`;
 
@@ -114,10 +111,7 @@ const addSlider = async () => {
         translateX(${position + offset * (Math.ceil(displayedCards) - displayedCards)}px)
         `;
       }
-    }
-
-    if (counter > positionSlide) {
-      counter = 1;
+    } else {
       position = 0;
       positionSlide = 1;
       sliderList.style.transform = `translateX(${position}px)`;
@@ -129,11 +123,10 @@ const addSlider = async () => {
       sliderList.style.transform = `translateX(${position += offset}px)`;
 
       positionSlide -= 1;
-      counter -= 1;
-    } else if (counter == 1) {
-      counter = positionSlide = Math.ceil(displayedCards);
+    } else {
+      positionSlide = Math.ceil(displayedCards);
       sliderList.style.transform = `translateX(-${((cardWidth + marginCard) * cards.length) - offset}px)`;
-      position = -((((cardWidth + marginCard) * cards.length) - offset) + offset * (Math.ceil(displayedCards) - displayedCards));
+      position = -((((cardWidth + marginCard) * cards.length) - offset) + (offset * (Math.ceil(displayedCards) - displayedCards)));
     }
   });
 };
