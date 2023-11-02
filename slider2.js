@@ -41,7 +41,7 @@ const enabledArrowBtn = (btn) => {
 };
 
 const setCardsWidth = (cards, sliderWrapperWidth, marginCard) => {
-  const htmlWidth = document.documentElement.offsetWidth; //*
+  const htmlWidth = document.documentElement.offsetWidth;
 
   cards.forEach(card => {
     if (htmlWidth > 880) {
@@ -59,7 +59,7 @@ const setCardsWidth = (cards, sliderWrapperWidth, marginCard) => {
 };
 
 const getMarginCard = (cards) => {
-  const marginCss = getComputedStyle(cards[0]).getPropertyValue('margin'); //*
+  const marginCss = getComputedStyle(cards[0]).getPropertyValue('margin');
   const indexSpace = marginCss.indexOf(' ');
   const margin = +marginCss.slice(indexSpace, -2) * 2;
 
@@ -97,20 +97,17 @@ const addSlider = async () => {
 
   let position = 0;
   let positionSlide = 1;
+  let counter = 1;
 
-  disableArrowBtn(arrowleft);
+  const displayedCards = cards.length / step;
 
   arrowRight.addEventListener('click', () => {
-    const displayedCards = cards.length / step;
+    counter += 1;
 
     if (positionSlide < displayedCards) {
       sliderList.style.transform = `translateX(${position -= offset}px)`;
 
-      enabledArrowBtn(arrowleft);
-
       positionSlide += 1;
-
-      console.log(position);
 
       if (displayedCards != Math.floor(displayedCards) && positionSlide === Math.ceil(displayedCards)) {
         sliderList.style.transform = `
@@ -119,9 +116,11 @@ const addSlider = async () => {
       }
     }
 
-
-    if (positionSlide === Math.ceil(displayedCards)) {
-      disableArrowBtn(arrowRight);
+    if (counter > positionSlide) {
+      counter = 1;
+      position = 0;
+      positionSlide = 1;
+      sliderList.style.transform = `translateX(${position}px)`;
     }
   });
 
@@ -129,17 +128,16 @@ const addSlider = async () => {
     if (positionSlide > 1) {
       sliderList.style.transform = `translateX(${position += offset}px)`;
 
-      enabledArrowBtn(arrowRight);
-
       positionSlide -= 1;
-    }
-
-    if (position === 0) {
-      disableArrowBtn(arrowleft);
+      counter -= 1;
+    } else if (counter == 1) {
+      counter = positionSlide = Math.ceil(displayedCards);
+      sliderList.style.transform = `translateX(-${((cardWidth + marginCard) * cards.length) - offset}px)`;
+      position = -((((cardWidth + marginCard) * cards.length) - offset) + offset * (Math.ceil(displayedCards) - displayedCards));
     }
   });
 };
 
-if (`${document.location.pathname}` == '/slider.html') { //*
+if (`${document.location.pathname.slice(0, -5)}` == '/slider2') {
   addSlider();
 }

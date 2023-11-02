@@ -55,6 +55,13 @@
       "title": "Planting",
       "descr": "Lorem Ipsum has been the industry",
       "descrBig": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi dolor nobis quas expedita nam fugiat, explicabo doloremque deleniti corporis quam alias illo iusto quis similique est vero voluptate! Officiis, at!"
+    },
+    {
+      "service": "planting",
+      "img": "./assets/service-card-3.png",
+      "title": "Planting",
+      "descr": "Lorem Ipsum has been the industry",
+      "descrBig": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi dolor nobis quas expedita nam fugiat, explicabo doloremque deleniti corporis quam alias illo iusto quis similique est vero voluptate! Officiis, at!"
     }
   ],
   "request": [

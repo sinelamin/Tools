@@ -3,7 +3,8 @@
 import { } from './ajax_get_post.js';
 import { } from './fetch_api.js';
 import { } from './getCards.js';
-import { } from './slider.js';
+import { } from './slider1.js';
+import { } from './slider2.js';
 
 const inputNumbers = document.querySelectorAll('.form-input__tel');
 
