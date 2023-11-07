@@ -10,7 +10,7 @@ class Card {
     this.parent = parent;
   }
 
-  renderNext() {
+  render(boolean = true) {
     const card = document.createElement('div');
 
     card.classList.add('slider-item');
@@ -23,25 +23,14 @@ class Card {
           <p class="slider-item__descr">${this.descr}</p>
       `;
 
-    this.parent.append(card);
-  }
-
-  renderBack() {
-    const card = document.createElement('div');
-
-    card.classList.add('slider-item');
-    card.innerHTML = `
-          <img class="slider-item__img" src=${this.img} alt="slider-img">
-          <h3 class="slider-item__title">${this.title}</h3>
-          <p class="slider-item__descr">${this.descr}</p>
-      `;
-
-    card.setAttribute('data-id', this.dataAttribute);
-
-    this.parent.prepend(card);
+    if (boolean) {
+      this.parent.append(card);
+    } else {
+      this.parent.prepend(card);
+    }
   }
 }
-//-------------------------------------------
+//---------------------------------------------------------------------------------------
 
 const getCards = async (url) => {
   const response = await fetch(url);
@@ -80,6 +69,87 @@ const getMarginCard = (cards) => {
   return margin;
 };
 
+const deleteExtraCards = (step, cards, position) => {
+  if (position == 0) { // напрвление лево
+    for (let i = ((step * 3) - 1); i > ((step * 2) - 1); i -= 1) {
+      cards[i].remove();
+    }
+  } else { // напрвление право
+    for (let i = 0; i < step; i += 1) {
+      cards[i].remove();
+    }
+  }
+};
+
+const addNewCards = async (step, sliderList, position, cards) => {
+
+  let arr = [];
+
+  if (position != 0) { // напрвление право
+    for (let i = step; i < (step * 2); i += 1) {
+      arr.push(+document.querySelectorAll('.slider-item')[i].getAttribute('data-id'));
+    }
+  } else {
+    for (let i = 0; i < step; i += 1) { // напрвление лево
+      arr.push(+document.querySelectorAll('.slider-item')[i].getAttribute('data-id'));
+    }
+  }
+
+  let newRandomArr = await getRandomArr(cards, arr, step);
+
+  await getCards('http://localhost:3000/cards')
+    .then(data => {
+      for (let i = 0; i < step; i += 1) {
+        const newCard = new Card(
+          data[newRandomArr[i]].img,
+          data[newRandomArr[i]].title,
+          data[newRandomArr[i]].descr,
+          data[newRandomArr[i]].id,
+          sliderList
+        );
+
+        if (position != 0) {
+          newCard.render(true); // напрвление право
+        } else {
+          newCard.render(false); // напрвление лево
+        }
+      }
+    });
+};
+
+const getRandomIntIgetRandomArrnclusive = (min, max) => {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1) + min);
+};
+
+const getRandomArr = async (cards, arr, step) => {
+  let randomArr = [];
+  let randomNum;
+
+  let numberOfCardOptions = await getCards('http://localhost:3000/cards').then(data => data.length - 1);
+
+  while (randomArr.length < step) {
+    randomNum = getRandomIntIgetRandomArrnclusive(0, numberOfCardOptions);
+
+    if (!arr.includes(randomNum) && !randomArr.includes(randomNum)) {
+      randomArr.push(randomNum);
+    }
+  }
+
+  return randomArr;
+};
+
+const disableArrowBtn = (btn) => {
+  btn.style.pointerEvents = 'none';
+};
+
+const enabledArrowBtn = (btn) => {
+  btn.style.pointerEvents = 'auto';
+};
+
+//---------------------------------------------------------------------------------------
+
 const addSlider = async () => {
   const sliderList = document.querySelector('.slider-list');
 
@@ -97,7 +167,7 @@ const addSlider = async () => {
           data[i].descr,
           data[i].id,
           sliderList
-        ).renderNext();
+        ).render();
       }
     });
 
@@ -119,14 +189,14 @@ const addSlider = async () => {
   sliderList.style.transition = 'none';
   sliderList.style.transform = `translateX(${position}px)`;
 
-  console.log(document.querySelectorAll('.slider-item'));
-
   async function newCards() {
     await addNewCards(step, sliderList, position, cards);
     setCardsWidth(document.querySelectorAll('.slider-item'), sliderWrapperWidth, marginCard, step);
   }
 
   arrowRight.addEventListener('click', () => {
+    disableArrowBtn(arrowRight);
+
     sliderList.style.transition = 'transform 1s';
     sliderList.style.transform = `translateX(${position -= offset}px)`;
 
@@ -137,11 +207,15 @@ const addSlider = async () => {
 
       sliderList.style.transition = 'none';
       sliderList.style.transform = `translateX(${position += offset}px)`; // смещение на position == -offset
+
+      enabledArrowBtn(arrowRight);
     }, 1000);
   });
 
 
   arrowleft.addEventListener('click', () => {
+    disableArrowBtn(arrowleft);
+
     sliderList.style.transition = 'transform 1s';
     sliderList.style.transform = `translateX(${position += offset}px)`;
 
@@ -152,104 +226,14 @@ const addSlider = async () => {
 
       sliderList.style.transition = 'none';
       sliderList.style.transform = `translateX(${position -= offset}px)`; // смещение на position == 0
+
+      enabledArrowBtn(arrowleft);
     }, 1000);
   });
 };
 
 if (`${document.location.pathname.slice(0, -5)}` == '/slider3') {
   addSlider();
-}
-
-function deleteExtraCards(step, cards, position) {
-  if (position == 0) { // напрвление лево
-    for (let i = ((step * 3) - 1); i > ((step * 2) - 1); i -= 1) {
-      cards[i].remove();
-    }
-  } else { // напрвление право
-    for (let i = 0; i < step; i += 1) {
-      cards[i].remove();
-    }
-  }
-}
-
-async function addNewCards(step, sliderList, position, cards) {
-
-  let arr = [];
-
-  if (position != 0) { // напрвление право
-    for (let i = step; i < (step * 2); i += 1) {
-      arr.push(+document.querySelectorAll('.slider-item')[i].getAttribute('data-id'));
-    }
-
-    console.log('old arr', arr);
-
-    let newRandomArr = getRandomArr(cards, arr, step);
-    console.log('new Random Arr', newRandomArr);
-
-    console.log('напрвление право');
-    await getCards('http://localhost:3000/cards')
-      .then(data => {
-        for (let i = 0; i < step; i += 1) {
-          new Card(
-            data[newRandomArr[i]].img,
-            data[newRandomArr[i]].title,
-            data[newRandomArr[i]].descr,
-            data[newRandomArr[i]].id,
-            sliderList
-          ).renderNext();
-        }
-      });
-  }
-
-  if (position == 0) { // напрвление лево
-    for (let i = 0; i < step; i += 1) {
-      arr.push(+document.querySelectorAll('.slider-item')[i].getAttribute('data-id'));
-    }
-
-    console.log('old arr', arr);
-
-    let newRandomArr = getRandomArr(cards, arr, step);
-    console.log('new Random Arr', newRandomArr);
-
-    console.log('напрвление лево');
-    await getCards('http://localhost:3000/cards')
-      .then(data => {
-        for (let i = 0; i < step; i += 1) {
-          new Card(
-            data[newRandomArr[i]].img,
-            data[newRandomArr[i]].title,
-            data[newRandomArr[i]].descr,
-            data[newRandomArr[i]].id,
-            sliderList
-          ).renderBack();
-        }
-      });
-  }
-
-
-}
-
-function getRandomIntIgetRandomArrnclusive(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1) + min);
-}
-
-function getRandomArr(cards, arr, step) {
-  let randomArr = [];
-  let randomNum;
-
-  // console.log('arr', arr);
-
-  while (randomArr.length < step) {
-    randomNum = getRandomIntIgetRandomArrnclusive(0, cards.length);
-
-    if (!arr.includes(randomNum) && !randomArr.includes(randomNum)) {
-      randomArr.push(randomNum);
-    }
-  }
-
-  return randomArr;
 }
 
 
