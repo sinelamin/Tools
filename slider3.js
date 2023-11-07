@@ -81,7 +81,7 @@ const deleteExtraCards = (step, cards, position) => {
   }
 };
 
-const addNewCards = async (step, sliderList, position, cards) => {
+const addNewCards = async (step, sliderList, position) => {
 
   let arr = [];
 
@@ -95,7 +95,7 @@ const addNewCards = async (step, sliderList, position, cards) => {
     }
   }
 
-  let newRandomArr = await getRandomArr(cards, arr, step);
+  let newRandomArr = await getRandomArr(arr, step);
 
   await getCards('http://localhost:3000/cards')
     .then(data => {
@@ -123,7 +123,7 @@ const getRandomIntIgetRandomArrnclusive = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
 };
 
-const getRandomArr = async (cards, arr, step) => {
+const getRandomArr = async (arr, step) => {
   let randomArr = [];
   let randomNum;
 
@@ -181,6 +181,7 @@ const addSlider = async () => {
   const sliderWrapperWidth = sliderWrapper.offsetWidth;
 
   setCardsWidth(cards, sliderWrapperWidth, marginCard, step);
+
   const cardWidth = cards[0].offsetWidth;
   const offset = (cardWidth + marginCard) * step;
 
@@ -190,7 +191,8 @@ const addSlider = async () => {
   sliderList.style.transform = `translateX(${position}px)`;
 
   async function newCards() {
-    await addNewCards(step, sliderList, position, cards);
+    await addNewCards(step, sliderList, position);
+
     setCardsWidth(document.querySelectorAll('.slider-item'), sliderWrapperWidth, marginCard, step);
   }
 
@@ -234,58 +236,8 @@ const addSlider = async () => {
 
 if (`${document.location.pathname.slice(0, -5)}` == '/slider3') {
   addSlider();
+
+  window.addEventListener('resize', () => {
+    location.reload(); // обновлние страницы для динамической адаптивности слайдера
+  });
 }
-
-
-
-
-
-
-// Слайдер должен быть загружен на 3 экрана => левый - центр - правый
-// Дефолтное згначение когда слайдер смещен на центральную позицию
-// При нажатии на одну из кнопок слайдер смещается на один экрана в соответствующую сторону
-// Статус экранов изменяется на примере смещения в право =>
-// левый удаляется, центр становится левым, правый становится центром, новый экран карточек добавляется и стновится правым
-
-// const renderedCards = Число карточек на 1-ом экране * 3 (левый/центр/правый)
-// function deleteExtraCards(cards, напрвление лево/право) {
-//   // const x = число карточек всего;
-//   // cosnt y = число карточек на экране;
-
-//   if(напрвление право) {
-//     for(let i = 0; i < y; i += 1) {
-//       cards[i].remove();
-//     }
-
-//     смещение слайдера на центр
-//   }
-
-//   // const z = x - y; число до которого удалять
-
-//   if(напрвление лево) {
-//     for(let i = (x - 1); i > (z - 1); i -= 1) {
-//       cards[i].remove();
-//     }
-//   }
-// }
-
-// function addNewCards(cards, напрвление лево/право) {
-//   if(напрвление право) {
-//     for(i = сколько карточек отображается на экране) {
-//       цикл создание карточек i раз
-//       sliderItem.append(card);
-//     }
-//   }
-
-//   if(напрвление лево) {
-//     sliderItem.prepend(card);
-
-//     смещение слайдера на центр
-//   }
-// }
-
-// function offsetNext() {
-// }
-
-// function offsetBack() {
-// }
