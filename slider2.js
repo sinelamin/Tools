@@ -66,6 +66,25 @@ const getMarginCard = (cards) => {
   return margin;
 };
 
+const createProgressBar = (parent, displayedCards) => {
+  for (let i = 0; i < Math.ceil(displayedCards); i += 1) {
+    const progressbarPoint = document.createElement('li');
+    progressbarPoint.classList.add('slider-progressbar__point');
+
+    parent.append(progressbarPoint);
+  }
+};
+
+const changeProgressBar = (positionSlide, progressbarPoint) => {
+  progressbarPoint.forEach((item, index) => {
+    if ((index + 1) == positionSlide) {
+      item.classList.add('slider-progressbar__point--active');
+    } else {
+      item.classList.remove('slider-progressbar__point--active');
+    }
+  });
+};
+
 const addSlider = async () => {
   const sliderList = document.querySelector('.slider-list');
 
@@ -85,6 +104,9 @@ const addSlider = async () => {
   const arrowleft = document.querySelector('.slider-btn__left');
   const arrowRight = document.querySelector('.slider-btn__right');
   const cards = document.querySelectorAll('.slider-item');
+  const progressbarList = document.querySelector('.slider-progressbar__list');
+  // const progressbarPoint = document.querySelectorAll('.slider-progressbar__point');
+
 
   const marginCard = getMarginCard(cards);
 
@@ -100,11 +122,16 @@ const addSlider = async () => {
 
   const displayedCards = cards.length / step;
 
+  createProgressBar(progressbarList, displayedCards);
+  const progressbarPoint = document.querySelectorAll('.slider-progressbar__point');
+  changeProgressBar(positionSlide, progressbarPoint);
+
   arrowRight.addEventListener('click', () => {
     if (positionSlide < displayedCards) {
       sliderList.style.transform = `translateX(${position -= offset}px)`;
 
       positionSlide += 1;
+
 
       if (displayedCards != Math.floor(displayedCards) && positionSlide === Math.ceil(displayedCards)) {
         sliderList.style.transform = `
@@ -116,6 +143,8 @@ const addSlider = async () => {
       positionSlide = 1;
       sliderList.style.transform = `translateX(${position}px)`;
     }
+
+    changeProgressBar(positionSlide, progressbarPoint);
   });
 
   arrowleft.addEventListener('click', () => {
@@ -123,13 +152,17 @@ const addSlider = async () => {
       sliderList.style.transform = `translateX(${position += offset}px)`;
 
       positionSlide -= 1;
+
     } else {
       positionSlide = Math.ceil(displayedCards);
       sliderList.style.transform = `translateX(-${((cardWidth + marginCard) * cards.length) - offset}px)`;
       position = -((((cardWidth + marginCard) * cards.length) - offset) + (offset * (Math.ceil(displayedCards) - displayedCards)));
     }
+
+    changeProgressBar(positionSlide, progressbarPoint);
   });
 };
+
 
 if (`${document.location.pathname.slice(0, -5)}` == '/slider2') {
   addSlider();

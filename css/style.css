@@ -319,6 +319,36 @@ button {
   text-align: center;
 }
 
+.slider-progressbar {
+  margin: 0 auto;
+  width: 30%;
+}
+
+.slider-progressbar__list {
+  display: flex;
+  margin-top: 0;
+  margin-bottom: 10px;
+  padding: 0;
+  justify-content: space-around;
+  align-items: center;
+  height: 30px;
+}
+
+.slider-progressbar__point {
+  width: 10px;
+  height: 10px;
+  background-color: #fff;
+  border-radius: 50%;
+  transition: background-color .5s;
+}
+
+.slider-progressbar__point--active {
+  width: 15px;
+  height: 15px;
+  background-color: #000;
+  transition: background-color .5s;
+}
+
 @media (max-width: 1030px) {
   .slider-item {
     margin: 0 10px;
@@ -335,6 +365,20 @@ button {
   .slider-item {
     margin: 0 10px;
   }
+
+  .slider-progressbar {
+    width: 50%;
+  }
+
+  .slider-progressbar__point {
+    width: 8px;
+    height: 8px;
+  }
+
+  .slider-progressbar__point--active {
+    width:12px;
+    height: 12px;
+  }
 }
 
 @media (max-width: 631px) {
@@ -346,6 +390,10 @@ button {
 @media (max-width: 600px) {
   .slider-item {
     margin: 0 10%;
+  }
+
+  .slider-progressbar {
+    display: none;
   }
 }
 
