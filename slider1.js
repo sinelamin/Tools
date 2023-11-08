@@ -66,6 +66,10 @@ const getMarginCard = (cards) => {
   return margin;
 };
 
+const changePosition = (positionSlide, paginationItem) => {
+  paginationItem.textContent = positionSlide;
+};
+
 const addSlider = async () => {
   const sliderList = document.querySelector('.slider-list');
 
@@ -79,12 +83,13 @@ const addSlider = async () => {
           sliderList
         ).render();
       });
-    });
+    }).catch();
 
   const sliderWrapper = document.querySelector('.slider-wrapper');
   const arrowleft = document.querySelector('.slider-btn__left');
   const arrowRight = document.querySelector('.slider-btn__right');
   const cards = document.querySelectorAll('.slider-item');
+  const paginationItem = document.querySelector('.pagination-list__item');
 
   const marginCard = getMarginCard(cards);
 
@@ -109,6 +114,7 @@ const addSlider = async () => {
       enabledArrowBtn(arrowleft);
 
       positionSlide += 1;
+      changePosition(positionSlide, paginationItem);
 
       if (displayedCards != Math.floor(displayedCards) && positionSlide === Math.ceil(displayedCards)) {
         sliderList.style.transform = `
@@ -130,6 +136,7 @@ const addSlider = async () => {
       enabledArrowBtn(arrowRight);
 
       positionSlide -= 1;
+      changePosition(positionSlide, paginationItem);
 
       if (positionSlide == 1) {
         disableArrowBtn(arrowleft);

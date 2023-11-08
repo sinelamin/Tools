@@ -18,6 +18,10 @@ a {
   color: inherit;
 }
 
+ul{
+  list-style: none;
+}
+
 .overlay {
   position: absolute;
   top: 0;
@@ -288,6 +292,31 @@ button {
 
 .slider-btn__arrow:hover {
   background-color: grey;
+}
+
+.slider-pagination {
+  position: relative;
+  display: inline-block;
+  left: -116px;
+  width: 35px;
+  height: 35px;
+  background-color: #fff;
+  border-radius: 50%;
+}
+
+.pagination-list {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+
+.pagination-list__item {
+  font-size: 16px;
+  font-weight: 600;
+  width: 100%;
+  text-align: center;
 }
 
 @media (max-width: 1030px) {
