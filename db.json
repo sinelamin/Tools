@@ -1,0 +1,111 @@
+{
+  "cards": [
+    {
+      "id": "0",
+      "service": "gardens",
+      "img": "./assets/service-card-1.png",
+      "title": "Garden care11",
+      "descr": "Lorem Ipsum has been the industry",
+      "descrBig": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi dolor nobis quas expedita nam fugiat, explicabo doloremque"
+    },
+    {
+      "id": "1",
+      "service": "planting",
+      "img": "./assets/service-card-2.png",
+      "title": "Planting22",
+      "descr": "Lorem Ipsum has been the industry",
+      "descrBig": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi dolor nobis quas expedita nam fugiat, explicabo doloremque deleniti corporis quam alias illo iusto quis similique est vero voluptate! Officiis, at!"
+    },
+    {
+      "id": "2",
+      "service": "lawn",
+      "img": "./assets/service-card-3.png",
+      "title": "Lawn care33",
+      "descr": "Lorem Ipsum has been the industry",
+      "descrBig": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi dolor nobis quas expedita nam fugiat, est vero voluptate! Officiis, at!"
+    },
+    {
+      "id": "3",
+      "service": "planting",
+      "img": "./assets/service-card-4.png",
+      "title": "Planting44",
+      "descr": "Lorem Ipsum has been the industry",
+      "descrBig": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi dolor nobis quas expedita nam fugiat, explicabo doloremque deleniti corporis quam alias illo iusto quis similique est vero voluptate! Officiis, at, explicabo doloremque deleniti corporis quam alias illo iusto quis similique est vero voluptate! Officiis, at!"
+    },
+    {
+      "id": "4",
+      "service": "gardens55",
+      "img": "./assets/service-card-5.png",
+      "title": "Garden care",
+      "descr": "Lorem Ipsum has been the industry",
+      "descrBig": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi dolor nobis quas expedita nam fugiat!"
+    },
+    {
+      "id": "5",
+      "service": "planting",
+      "img": "./assets/service-card-6.png",
+      "title": "Planting66",
+      "descr": "Lorem Ipsum has been the industry",
+      "descrBig": "Sequi dolor nobis quas expedita nam fugiat, explicabo doloremque deleniti corporis quam alias illo iusto quis similique est vero voluptate! Officiis, at!"
+    },
+    {
+      "id": "6",
+      "service": "gardens",
+      "img": "./assets/service-card-1.png",
+      "title": "Garden care77",
+      "descr": "Lorem Ipsum has been the industry",
+      "descrBig": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi dolor nobis quas expedita nam fugiat, explicabo doloremque"
+    },
+    {
+      "id": "7",
+      "service": "planting",
+      "img": "./assets/service-card-2.png",
+      "title": "Planting88",
+      "descr": "Lorem Ipsum has been the industry",
+      "descrBig": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi dolor nobis quas expedita nam fugiat, explicabo doloremque deleniti corporis quam alias illo iusto quis similique est vero voluptate! Officiis, at!"
+    },
+    {
+      "id": "8",
+      "service": "planting",
+      "img": "./assets/service-card-3.png",
+      "title": "Planting99",
+      "descr": "Lorem Ipsum has been the industry",
+      "descrBig": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi dolor nobis quas expedita nam fugiat, explicabo doloremque deleniti corporis quam alias illo iusto quis similique est vero voluptate! Officiis, at!"
+    },
+    {
+      "id": "9",
+      "service": "planting",
+      "img": "./assets/service-card-3.png",
+      "title": "Planting100",
+      "descr": "Lorem Ipsum has been the industry",
+      "descrBig": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi dolor nobis quas expedita nam fugiat, explicabo doloremque deleniti corporis quam alias illo iusto quis similique est vero voluptate! Officiis, at!"
+    },
+    {
+      "id": "10",
+      "service": "planting",
+      "img": "./assets/service-card-3.png",
+      "title": "Planting101",
+      "descr": "Lorem Ipsum has been the industry",
+      "descrBig": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi dolor nobis quas expedita nam fugiat, explicabo doloremque deleniti corporis quam alias illo iusto quis similique est vero voluptate! Officiis, at!"
+    },
+    {
+      "id": "11",
+      "service": "planting",
+      "img": "./assets/service-card-3.png",
+      "title": "Planting102",
+      "descr": "Lorem Ipsum has been the industry",
+      "descrBig": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi dolor nobis quas expedita nam fugiat, explicabo doloremque deleniti corporis quam alias illo iusto quis similique est vero voluptate! Officiis, at!"
+    },
+    {
+      "id": "12",
+      "service": "planting",
+      "img": "./assets/service-card-3.png",
+      "title": "Planting103",
+      "descr": "Lorem Ipsum has been the industry",
+      "descrBig": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi dolor nobis quas expedita nam fugiat, explicabo doloremque deleniti corporis quam alias illo iusto quis similique est vero voluptate! Officiis, at!"
+    }
+  ],
+  "request": [
+    
+  ]
+}

@@ -1,14 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="./assets/tools.png">
   <link rel="stylesheet" href="./css/normalize.css">
   <link rel="stylesheet" href="./css/style.css">
-  <title>Tools</title>
+  <title>Forms</title>
 </head>
+
 <body>
-  
+
+  <div class="container">
+    <a class="link-page" href="cards.html">
+      <button class="link-page__btn">link to cards</button>
+    </a>
+    <a class="link-page" href="slider1.html">
+      <button class="link-page__btn">link to slider#1</button>
+    </a>
+    <a class="link-page" href="slider2.html">
+      <button class="link-page__btn">link to slider#2</button>
+    </a>
+    <a class="link-page" href="slider3.html">
+      <button class="link-page__btn">link to slider#3</button>
+    </a>
+  </div>
+
+  <div class="container">
+    <div class="contact-form">
+      <h3 class="block-title">Форма отправки контактов #1</h3>
+      <form class="form" action="#">
+        <label class="form-item">
+          <input required autocomplete="off" class="form-input form-input__name" name="username-1" type="text">
+          Имя
+        </label>
+        <!-- <label class="form-item">
+        <input required autocomplete="off" class="form-input" name="pass" type="password">
+        Пароль
+      </label> -->
+        <label class="form-item">
+          <input required autocomplete="off" class="form-input form-input__tel" name="tel-1" type="tel">
+          Номер телефона
+        </label>
+        <label class="form-item form-consent">
+          <input required checked class="form-input" name="consent" type="checkbox">
+          Подтвердите согласие на обратку персональных данных
+        </label>
+        <button class="form-btn" type="submit">Отправить</button>
+      </form>
+    </div>
+
+    <div class="currency-converter">
+      <h3 class="block-title">Конвертор валют RUB - USD</h3>
+      <form class="form form-convertor" action="#">
+        <label class="form-item">
+          <input required autocomplete="off" class="form-input item-rub" name="rub" type="text">
+          RUB
+        </label>
+        <label class="form-item">
+          <input required autocomplete="off" class="form-input item-usd" name="usd" type="text">
+          USD
+        </label>
+      </form>
+    </div>
+
+    <div class="contact-form">
+      <h3 class="block-title">Форма отправки контактов #2</h3>
+      <form class="form" action="#">
+        <label class="form-item">
+          <input required autocomplete="off" class="form-input form-input__name" name="username-2" type="text">
+          Имя
+        </label>
+        <label class="form-item">
+          <input required autocomplete="off" class="form-input form-input__tel" name="tel-2" type="tel">
+          Номер телефона
+        </label>
+        <label class="form-item form-consent">
+          <input required checked class="form-input" name="consent" type="checkbox">
+          Подтвердите согласие на обратку персональных данных
+        </label>
+        <button class="form-btn" type="submit">Отправить</button>
+      </form>
+    </div>
+  </div>
+
+  <script type="module" src="./script.js"></script>
 </body>
+
 </html>
